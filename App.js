@@ -15,15 +15,29 @@ export default function App() {
       value: 0.6
     }
   ]
-  const [selectedGender, setSelectedGender] = useState(0.7);
+  const [gender, setGender] = useState(0.7);
   const [weight, setWeight] = useState(0);
   const [bottles, setBottles] = useState(0);
   const [time, setTime] = useState(0);
   const [bloodAlcoholLevel, setBloodAlcoholLevel] = useState(0);
 
   const chooseAmount = Array(51).fill().map((_, i) => i);
-  console.log(chooseAmount);
-  console.log("weight " + weight + " bottles " + bottles)
+
+  function calculate() {
+    const litres = bottles * 0.33;
+    const grams = litres * 8 * 4.5;
+    const burning = weight / 10;
+    const grams_left = grams - (burning * time);
+    
+    setBloodAlcoholLevel(grams_left / (weight * gender));
+
+    if ((grams_left / (weight * gender)) < 0) {
+      setBloodAlcoholLevel(0);
+    }
+  }
+
+  console.log("weight " + weight + " bottles " + bottles + "time" + time + "gender" + gender)
+
   return (
     <View style={StyleSheet.container}>
       <ScrollView>
@@ -38,9 +52,9 @@ export default function App() {
         </View>
         <View style={StyleSheet.row}>
           <Text style={StyleSheet.label}>Bottles</Text>
-          <Picker 
-          onValueChange={(itemValue) => setBottles(itemValue)} 
-          selectedValue={bottles}>
+          <Picker
+            onValueChange={(itemValue) => setBottles(itemValue)}
+            selectedValue={bottles}>
             {chooseAmount.map((number) => (
               <Picker.Item label={"" + number} value={number} key={number} />
             ))}
@@ -48,9 +62,9 @@ export default function App() {
         </View>
         <View style={StyleSheet.row}>
           <Text style={StyleSheet.label}>Time (h)</Text>
-          <Picker 
-          onValueChange={(itemValue) => setTime(itemValue)} 
-          selectedValue={time}>
+          <Picker
+            onValueChange={(itemValue) => setTime(itemValue)}
+            selectedValue={time}>
             {chooseAmount.map((number) => (
               <Picker.Item label={"" + number} value={number} key={number} />
             ))}
@@ -58,13 +72,13 @@ export default function App() {
         </View>
         <View style={StyleSheet.container}>
           <Text style={StyleSheet.label}>Gender</Text>
-          <Radiobutton options={buttonLabels} onPress={(value) => { setSelectedGender(value) }} defaultValue={0.7} />
+          <Radiobutton options={buttonLabels} onPress={(value) => { setGender(value) }} defaultValue={0.7} />
         </View>
         <View style={StyleSheet.row}>
-          <Button color='#0040F0' title='Calculate' />
+          <Button onPress={calculate} color='#0040F0' title='Calculate' />
         </View>
         <View style={StyleSheet.row}>
-          <Text style={StyleSheet.result}>Blood alcohol level:</Text>
+          <Text style={StyleSheet.result}>Blood alcohol level: {bloodAlcoholLevel.toFixed(2)}</Text>
         </View>
       </ScrollView>
     </View>

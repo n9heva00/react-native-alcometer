@@ -37,7 +37,7 @@ export default StyleSheet.create({
     paddingRight: 30,
     marginBottom: 30,
   },
-  genderLabel: {
+  radioLabel: {
     marginRight: 10,
     fontSize: 16,
   },
