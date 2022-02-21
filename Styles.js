@@ -13,28 +13,38 @@ export default StyleSheet.create({
     flexDirection: 'column',
     marginTop: 20,
     marginBottom: 10,
+    paddingHorizontal: 24,
   },
   header: {
     fontSize: 30,
     marginTop: 10,
-    marginBottom: 50,
+    marginBottom: 25,
     fontWeight: 'bold',
     color: '#0040F0',
     alignSelf: 'center',
   },
   label: {
     fontSize: 18,
-    paddingLeft: 24,
     fontWeight: 'bold',
     color: '#000',
+  },
+  genderLabel: {
+    fontSize: 18,
+    paddingHorizontal: 24,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  input: {
+    fontSize: 16,
+    paddingHorizontal: 8,
+
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     width: '100%',
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingHorizontal: 30,
     marginBottom: 30,
   },
   radioLabel: {
@@ -58,18 +68,34 @@ export default StyleSheet.create({
   },
   result: {
     fontSize: 24,
-    marginTop: 50,
-    marginBottom: 50,
+    marginTop: 25,
+    marginBottom: 25,
+    alignSelf: 'center',
     fontWeight: 'bold',
     color: '#0040F0'
   },
   zero: {
+    fontSize: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    alignSelf: 'center',
+    fontWeight: 'bold',
     color: 'green'
   },
   low: {
+    fontSize: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    alignSelf: 'center',
+    fontWeight: 'bold',
     color: 'yellow'
   },
   high: {
+    fontSize: 24,
+    marginTop: 25,
+    marginBottom: 25,
+    alignSelf: 'center',
+    fontWeight: 'bold',
     color: 'red'
   }
 })
